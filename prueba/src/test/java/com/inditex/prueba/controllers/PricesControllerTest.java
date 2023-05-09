@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 
 import com.inditex.prueba.repositories.IPricesDao;
 import com.inditex.prueba.models.Price;
+import com.inditex.prueba.models.PriceDto;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -40,24 +41,48 @@ class PricesControllerTest{
 	public void testConsultarPrices1() {
 		// Test case for 10:00 of day 14
 		Price price = new Price();
+		PriceDto priceDto = new PriceDto();
 		when(pricesRepository.obtenerDatos(fecha1, productoId, brandId)).thenReturn(price);
-
-		ResponseEntity<Price> response = pricesController.consultarPrices(fecha1, productoId, brandId);
-
-		assert(response.getStatusCode()).isSameCodeAs(HttpStatus.OK);
-		assert(response.getBody()).equals(price);
+		if(price != null && price.getId()!= null) {
+			priceDto.setProductId(price.getId().getProductId());
+			priceDto.setBrandId(price.getId().getBrandId());
+			priceDto.setPriceList(price.getPriceList());
+			priceDto.setStartDate(price.getId().getStartDate());
+			priceDto.setEndDate(price.getId().getEndDate());
+			priceDto.setPrice(price.getPrice());
+			ResponseEntity<PriceDto> response = pricesController.consultarPrices(fecha1, productoId, brandId);
+			assert(response.getStatusCode()).isSameCodeAs(HttpStatus.OK);
+			assert(response.getBody()).equals(priceDto);
+		}else {
+			ResponseEntity<PriceDto> response = pricesController.consultarPrices(fecha1, productoId, brandId);
+			assert(response.getStatusCode()).isSameCodeAs(HttpStatus.NOT_FOUND);
+		}
+		
+		
+		
 	}
 
 	@Test
 	public void testConsultarPrices2() {
 		// Test case for 16:00 of day 14
 		Price price = new Price();
+		PriceDto priceDto = new PriceDto();
 		
 		when(pricesRepository.obtenerDatos(fecha2, productoId, brandId)).thenReturn(price);
-		ResponseEntity<Price> response = pricesController.consultarPrices(fecha2, productoId, brandId);
-
-		assert(response.getStatusCode()).isSameCodeAs(HttpStatus.OK);
-		assert(response.getBody()).equals(price);
+		if(price != null &&  price.getId()!= null) {
+			priceDto.setProductId(price.getId().getProductId());
+			priceDto.setBrandId(price.getId().getBrandId());
+			priceDto.setPriceList(price.getPriceList());
+			priceDto.setStartDate(price.getId().getStartDate());
+			priceDto.setEndDate(price.getId().getEndDate());
+			priceDto.setPrice(price.getPrice());
+			ResponseEntity<PriceDto> response = pricesController.consultarPrices(fecha2, productoId, brandId);
+			assert(response.getStatusCode()).isSameCodeAs(HttpStatus.OK);
+			assert(response.getBody()).equals(priceDto);
+		}else {
+			ResponseEntity<PriceDto> response = pricesController.consultarPrices(fecha2, productoId, brandId);
+			assert(response.getStatusCode()).isSameCodeAs(HttpStatus.NOT_FOUND);
+		}
 	}
 
 
@@ -66,13 +91,23 @@ class PricesControllerTest{
 	public void testConsultarPrices3() {
 		// Test case for 21:00 of day 14
 		Price price = new Price();
-
+	    PriceDto priceDto = new PriceDto();
+		
 		when(pricesRepository.obtenerDatos(fecha3, productoId, brandId)).thenReturn(price);
-
-		ResponseEntity<Price> response = pricesController.consultarPrices(fecha3, productoId, brandId);
-
-		assert(response.getStatusCode()).isSameCodeAs(HttpStatus.OK);
-		assert(response.getBody()).equals(price);
+		if(price != null &&  price.getId()!= null) {
+			priceDto.setProductId(price.getId().getProductId());
+			priceDto.setBrandId(price.getId().getBrandId());
+			priceDto.setPriceList(price.getPriceList());
+			priceDto.setStartDate(price.getId().getStartDate());
+			priceDto.setEndDate(price.getId().getEndDate());
+			priceDto.setPrice(price.getPrice());
+			ResponseEntity<PriceDto> response = pricesController.consultarPrices(fecha3, productoId, brandId);
+			assert(response.getStatusCode()).isSameCodeAs(HttpStatus.OK);
+			assert(response.getBody()).equals(priceDto);
+		}else {
+			ResponseEntity<PriceDto> response = pricesController.consultarPrices(fecha3, productoId, brandId);
+			assert(response.getStatusCode()).isSameCodeAs(HttpStatus.NOT_FOUND);
+		}
 	}
 
 
@@ -80,13 +115,23 @@ class PricesControllerTest{
 	public void testConsultarPrices4() {
 		// Test case for 10:00 of day 15
 		Price price = new Price();
-
+	    PriceDto priceDto = new PriceDto();
+		
 		when(pricesRepository.obtenerDatos(fecha4, productoId, brandId)).thenReturn(price);
-
-		ResponseEntity<Price> response = pricesController.consultarPrices(fecha4, productoId, brandId);
-
-		assert(response.getStatusCode()).isSameCodeAs(HttpStatus.OK);
-		assert(response.getBody()).equals(price);
+		if(price != null &&  price.getId()!= null) {
+			priceDto.setProductId(price.getId().getProductId());
+			priceDto.setBrandId(price.getId().getBrandId());
+			priceDto.setPriceList(price.getPriceList());
+			priceDto.setStartDate(price.getId().getStartDate());
+			priceDto.setEndDate(price.getId().getEndDate());
+			priceDto.setPrice(price.getPrice());
+			ResponseEntity<PriceDto> response = pricesController.consultarPrices(fecha4, productoId, brandId);
+			assert(response.getStatusCode()).isSameCodeAs(HttpStatus.OK);
+			assert(response.getBody()).equals(priceDto);
+		}else {
+			ResponseEntity<PriceDto> response = pricesController.consultarPrices(fecha4, productoId, brandId);
+			assert(response.getStatusCode()).isSameCodeAs(HttpStatus.NOT_FOUND);
+		}
 	}
 
 
@@ -95,12 +140,22 @@ class PricesControllerTest{
 	public void testConsultarPrices5() {
 		// Test case for 21:00 of day 16
 		Price price = new Price();
-
+	    PriceDto priceDto = new PriceDto();
+		
 		when(pricesRepository.obtenerDatos(fecha5, productoId, brandId)).thenReturn(price);
-
-		ResponseEntity<Price> response = pricesController.consultarPrices(fecha5, productoId, brandId);
-
-		assert(response.getStatusCode()).isSameCodeAs(HttpStatus.OK);
-		assert(response.getBody()).equals(price);
+		if(price != null &&  price.getId()!= null) {
+			priceDto.setProductId(price.getId().getProductId());
+			priceDto.setBrandId(price.getId().getBrandId());
+			priceDto.setPriceList(price.getPriceList());
+			priceDto.setStartDate(price.getId().getStartDate());
+			priceDto.setEndDate(price.getId().getEndDate());
+			priceDto.setPrice(price.getPrice());
+			ResponseEntity<PriceDto> response = pricesController.consultarPrices(fecha5, productoId, brandId);
+			assert(response.getStatusCode()).isSameCodeAs(HttpStatus.OK);
+			assert(response.getBody()).equals(priceDto);
+		}else {
+			ResponseEntity<PriceDto> response = pricesController.consultarPrices(fecha5, productoId, brandId);
+			assert(response.getStatusCode()).isSameCodeAs(HttpStatus.NOT_FOUND);
+		}
 	}
 }

@@ -69,15 +69,25 @@ public class Price implements Serializable {
 		this.currency = currency;
 	}
 
-	public void setId(PriceId priceId) {
-		PriceId id = new PriceId();
-		id.setStartDate(priceId.getStartDate());
-		id.setEndDate(priceId.getEndDate());
-		id.setProductId(priceId.getProductId());
-		id.setBrandId(priceId.getBrandId());
-		priceId = id;
-		
-	}
+//	public void setId(PriceId priceId) {
+//		PriceId id = new PriceId();
+//		id.setStartDate(priceId.getStartDate());
+//		id.setEndDate(priceId.getEndDate());
+//		id.setProductId(priceId.getProductId());
+//		id.setBrandId(priceId.getBrandId());
+//		priceId = id;
+//		
+//	}
+//	
+
+    // getters and setters
+    public PriceId getId() {
+        return id;
+    }
+
+    public void setId(PriceId priceId) {
+        this.id = priceId;
+    }
 	
 	public int getPriceList() {
 		return priceList;
