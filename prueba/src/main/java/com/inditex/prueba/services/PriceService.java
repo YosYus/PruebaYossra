@@ -25,7 +25,7 @@ public class PriceService implements IPriceService {
 		   
 		try {
 			//LocalDateTime dateTime = LocalDateTime.parse(fecha, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-			Query query = entityManager.createQuery("SELECT p FROM Price p WHERE p.id.startDate <= :fecha AND p.id.endDate >= :fecha AND p.id.productId = :productId AND p.id.brandId = :brandId ORDER BY p.id.priority DESC");
+			Query query = entityManager.createQuery("SELECT p FROM Price p WHERE p.id.startDate <= :fecha AND p.id.endDate >= :fecha AND p.id.productId = :productId AND p.id.brandId = :brandId ORDER BY p.priority DESC");
 			query.setParameter("fecha", fecha);
 			query.setParameter("productId", productId);
 			query.setParameter("brandId", brandId);

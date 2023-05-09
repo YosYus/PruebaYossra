@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.inditex.prueba.models.Price;
-import com.inditex.prueba.repositories.IPricesDao;
+import com.inditex.prueba.services.IPriceService;
 import com.inditex.prueba.models.PriceDto;
 
 
@@ -33,7 +33,7 @@ public class PricesController {
 	 * 
 	 */
 	@Autowired
-	private IPricesDao  pricesRepository;
+	private IPriceService pricesRepository;
 
 	@GetMapping(value="findAll")
 	public List<Price> getPrices() {
